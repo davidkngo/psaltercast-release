@@ -1,6 +1,6 @@
-<p align="center"><img src="assets/lucerna.png" width="96" alt="Lucerna icon"></p>
+<p align="center"><img src="assets/psaltercast.png" width="96" alt="Psaltercast icon"></p>
 
-# Lucerna
+# Psaltercast
 
 Easy-to-use church service software for macOS, Windows and Linux. Put songs, scripture, presentations and media on screen, and run it all from your phone.
 
@@ -8,17 +8,19 @@ Easy-to-use church service software for macOS, Windows and Linux. Put songs, scr
 
 | Platform | File |
 |---|---|
-| macOS 13 or newer, Apple Silicon (M1 or newer) | `Lucerna-<version>-macos.dmg` |
-| Windows 10/11, 64-bit | `Lucerna-<version>-windows-x64.zip` |
-| Linux, x86-64 | `Lucerna-<version>-linux-x86_64.AppImage` |
+| macOS 13 or newer, Apple Silicon (M1 or newer) | `Psaltercast-<version>-macos.dmg` |
+| Windows 10/11, 64-bit | `Psaltercast-<version>-windows-x64.zip` |
+| Linux, x86-64 | `Psaltercast-<version>-linux-x86_64.AppImage` |
 
 ## Installing
 
-Lucerna isn't signed by Apple or Microsoft yet, so your computer asks once before opening it.
+Psaltercast isn't signed by Apple or Microsoft yet, so your computer asks once before opening it.
 
-- **macOS:** open the `.dmg` and drag Lucerna into Applications. The first time, right-click it and choose **Open**. If macOS says the app is damaged, run `xattr -dr com.apple.quarantine /Applications/Lucerna.app` once.
-- **Windows:** unzip, then run `lucerna.exe`. If SmartScreen appears, choose **More info → Run anyway**.
-- **Linux:** `chmod +x Lucerna-*.AppImage`, then run it. Some distributions need `libfuse2`.
+Psaltercast used to be called Lucerna: versions up to 0.0.4 still use that name for their files.
+
+- **macOS:** open the `.dmg` and drag Psaltercast into Applications. The first time, right-click it and choose **Open**. If macOS says the app is damaged, run `xattr -dr com.apple.quarantine /Applications/Psaltercast.app` once.
+- **Windows:** unzip, then run `psaltercast.exe`. If SmartScreen appears, choose **More info → Run anyway**.
+- **Linux:** `chmod +x Psaltercast-*.AppImage`, then run it. Some distributions need `libfuse2`.
 
 ## About this repository
 

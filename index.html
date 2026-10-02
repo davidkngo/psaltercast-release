@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lucerna — church service software</title>
-<meta name="description" content="Lucerna puts songs, scripture, presentations and media on screen for your church service. Free for macOS, Windows and Linux.">
+<title>Psaltercast — church service software</title>
+<meta name="description" content="Psaltercast puts songs, scripture, presentations and media on screen for your church service. Free for macOS, Windows and Linux.">
 <meta name="theme-color" content="#14181d">
-<meta property="og:title" content="Lucerna">
+<meta property="og:title" content="Psaltercast">
 <meta property="og:description" content="Easy-to-use church service software for macOS, Windows and Linux.">
-<meta property="og:image" content="assets/lucerna.png">
+<meta property="og:image" content="assets/psaltercast.png">
 <link rel="icon" type="image/png" href="assets/favicon.png">
-<link rel="apple-touch-icon" href="assets/lucerna.png">
+<link rel="apple-touch-icon" href="assets/psaltercast.png">
 <style>
   /* The app's palette: warm slate with an amber accent. */
   :root {
@@ -135,14 +135,14 @@
 
 <header class="hero">
   <div class="wrap">
-    <img src="assets/lucerna.png" alt="Lucerna icon: a lit oil lamp" width="112" height="112">
-    <h1>Lucerna</h1>
+    <img src="assets/psaltercast.png" alt="Psaltercast icon: a lit oil lamp" width="112" height="112">
+    <h1>Psaltercast</h1>
     <p class="tagline">Easy-to-use church service software. Put songs, scripture, slides and media on screen, and run it all from your phone.</p>
 
     <div class="download">
       <a id="primary" class="btn primary" href="https://github.com/davidkngo/lucerna-release/releases/latest">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 21h14"/></svg>
-        <span id="primary-label">Download Lucerna</span>
+        <span id="primary-label">Download Psaltercast</span>
       </a>
       <div id="meta" class="meta">Free for macOS, Windows and Linux</div>
       <div id="others" class="others"></div>
@@ -195,7 +195,8 @@
   <section id="install">
     <div class="wrap">
       <h2>Install</h2>
-      <p class="lead">Lucerna isn't signed by Apple or Microsoft yet, so your computer asks once before opening it.</p>
+      <p class="lead">Psaltercast isn't signed by Apple or Microsoft yet, so your computer asks once before opening it.</p>
+      <p class="note" style="color:var(--muted);margin:-18px 0 24px">Psaltercast used to be called Lucerna: versions up to 0.0.4 still use that name for their files.</p>
       <div class="tabs" role="tablist" aria-label="Operating system">
         <button role="tab" id="tab-macos" aria-controls="steps-macos" aria-selected="true">macOS</button>
         <button role="tab" id="tab-windows" aria-controls="steps-windows" aria-selected="false">Windows</button>
@@ -203,17 +204,17 @@
       </div>
       <div class="steps" id="steps-macos" role="tabpanel" aria-labelledby="tab-macos">
         <ol>
-          <li>Open the downloaded <code>.dmg</code> and drag <strong>Lucerna</strong> into Applications.</li>
-          <li>The first time, right-click Lucerna in Applications and choose <strong>Open</strong>, then <strong>Open</strong> again.</li>
+          <li>Open the downloaded <code>.dmg</code> and drag <strong>Psaltercast</strong> into Applications.</li>
+          <li>The first time, right-click Psaltercast in Applications and choose <strong>Open</strong>, then <strong>Open</strong> again.</li>
         </ol>
         <p class="note">For Macs with Apple Silicon (M1 or newer).</p>
         <p class="note">If macOS says the app is damaged, run this once in Terminal:</p>
-        <pre><code>xattr -dr com.apple.quarantine /Applications/Lucerna.app</code></pre>
+        <pre><code>xattr -dr com.apple.quarantine /Applications/Psaltercast.app</code></pre>
       </div>
       <div class="steps" id="steps-windows" role="tabpanel" aria-labelledby="tab-windows" hidden>
         <ol>
-          <li>Unzip the downloaded <code>.zip</code> somewhere you keep programs, for example <code>C:\Program Files\Lucerna</code>.</li>
-          <li>Run <code>lucerna.exe</code>. If SmartScreen appears, click <strong>More info</strong>, then <strong>Run anyway</strong>.</li>
+          <li>Unzip the downloaded <code>.zip</code> somewhere you keep programs, for example <code>C:\Program Files\Psaltercast</code>.</li>
+          <li>Run <code>psaltercast.exe</code>. If SmartScreen appears, click <strong>More info</strong>, then <strong>Run anyway</strong>.</li>
         </ol>
         <p class="note">Windows 10 or 11, 64-bit.</p>
       </div>
@@ -221,18 +222,18 @@
         <ol>
           <li>Make the downloaded AppImage executable, then run it:</li>
         </ol>
-        <pre><code>chmod +x Lucerna-*-linux-x86_64.AppImage
-./Lucerna-*-linux-x86_64.AppImage</code></pre>
+        <pre><code>chmod +x Psaltercast-*-linux-x86_64.AppImage
+./Psaltercast-*-linux-x86_64.AppImage</code></pre>
         <p class="note">64-bit x86 Linux. Some distributions need <code>libfuse2</code> to run AppImages.</p>
       </div>
-      <p class="note" style="color:var(--muted);margin-top:18px">Plug in a projector or TV as a second screen, and Lucerna shows the output there in full screen.</p>
+      <p class="note" style="color:var(--muted);margin-top:18px">Plug in a projector or TV as a second screen, and Psaltercast shows the output there in full screen.</p>
     </div>
   </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <span>Lucerna</span>
+    <span>Psaltercast</span>
     <span><a href="https://github.com/davidkngo/lucerna-release/releases">All releases</a> · <a href="https://github.com/davidkngo/lucerna-release/issues">Report a problem</a></span>
   </div>
 </footer>
@@ -292,7 +293,7 @@
         label.textContent = "Download for " + main.name;
         meta.textContent = "Version " + version + " · " + main.kind + " · " + size(main.asset.size) + " · " + date(release.published_at);
       } else {
-        label.textContent = "Download Lucerna " + version;
+        label.textContent = "Download Psaltercast " + version;
         meta.textContent = "Released " + date(release.published_at);
       }
       others.replaceChildren(...found.filter((p) => p !== main).map((p) => {
