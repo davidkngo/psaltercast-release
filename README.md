@@ -4,7 +4,7 @@
 
 Easy-to-use church service software for macOS, Windows and Linux. Put songs, scripture, presentations and media on screen, and run it all from your phone.
 
-**Download:** https://davidkngo.github.io/lucerna-release/ or the [latest release](https://github.com/davidkngo/lucerna-release/releases/latest).
+**Download:** https://davidkngo.github.io/psaltercast-release/ or the [latest release](https://github.com/davidkngo/psaltercast-release/releases/latest).
 
 | Platform | File |
 |---|---|
@@ -24,4 +24,4 @@ Psaltercast used to be called Lucerna: versions up to 0.0.4 still use that name 
 
 ## About this repository
 
-This repository only hosts releases and the download page (`index.html`, served by GitHub Pages). The builds are made and published here automatically. To report a problem, [open an issue](https://github.com/davidkngo/lucerna-release/issues).
+This repository only hosts releases and the download page (`index.html`, served by GitHub Pages). The builds are made and published here automatically. To report a problem, [open an issue](https://github.com/davidkngo/psaltercast-release/issues).
