@@ -8,7 +8,7 @@ Easy-to-use church service software for macOS, Windows and Linux. Put songs, scr
 
 | Platform | File |
 |---|---|
-| macOS 13 or newer, Apple Silicon (M1 or newer) | `Psaltercast-<version>-macos.dmg` |
+| macOS 13 or newer, Apple Silicon or Intel (Apple Silicon only up to 0.0.4) | `Psaltercast-<version>-macos.dmg` |
 | Windows 10/11, 64-bit | `Psaltercast-<version>-windows-x64.zip` |
 | Linux, x86-64 | `Psaltercast-<version>-linux-x86_64.AppImage` |
 
