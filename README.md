@@ -2,25 +2,23 @@
 
 # Psaltercast
 
-Easy-to-use church service software for macOS, Windows and Linux. Put songs, scripture, presentations and media on screen, and run it all from your phone.
+Easy-to-use church service software for Windows. Put songs, scripture, presentations and media on screen, and run it all from your phone.
 
 **Download:** https://davidkngo.github.io/psaltercast-release/ or the [latest release](https://github.com/davidkngo/psaltercast-release/releases/latest).
 
+<p align="center"><img src="assets/screenshot-app.webp" width="860" alt="Psaltercast running a Sunday service, with a song live in two languages"></p>
+
 | Platform | File |
 |---|---|
-| macOS 13 or newer, Apple Silicon or Intel (Apple Silicon only up to 0.0.4) | `Psaltercast-<version>-macos.dmg` |
-| Windows 10/11, 64-bit | `Psaltercast-<version>-windows-x64.zip` |
-| Linux, x86-64 | `Psaltercast-<version>-linux-x86_64.AppImage` |
+| Windows 10/11, 64-bit | `Psaltercast-<version>-windows-x64-setup.exe` |
 
 ## Installing
 
-Psaltercast isn't signed by Apple or Microsoft yet, so your computer asks once before opening it.
+Run the installer. It installs for your user (no administrator password), adds Start menu and desktop shortcuts, and can be removed from Settings › Apps. Updates install from inside the app.
 
-Psaltercast used to be called Lucerna: versions up to 0.0.4 still use that name for their files.
+Psaltercast isn't signed by Microsoft yet: if SmartScreen appears, choose **More info → Run anyway**.
 
-- **macOS:** open the `.dmg` and drag Psaltercast into Applications. The first time, right-click it and choose **Open**. If macOS says the app is damaged, run `xattr -dr com.apple.quarantine /Applications/Psaltercast.app` once.
-- **Windows:** unzip, then run `psaltercast.exe`. If SmartScreen appears, choose **More info → Run anyway**.
-- **Linux:** `chmod +x Psaltercast-*.AppImage`, then run it. Some distributions need `libfuse2`.
+Older releases (up to 0.0.5) also have builds for macOS and Linux, and a Windows `.zip`; versions up to 0.0.4 use the app's earlier name, Lucerna.
 
 ## About this repository
 
