@@ -97,13 +97,32 @@
   pre { margin: 10px 0 0; overflow-x: auto; }
   pre code { display: block; padding: 10px 12px; }
 
-  /* Real screenshots */
-  .shot { margin: 44px auto 0; max-width: 1040px; }
-  .shot img {
-    display: block; width: 100%; height: auto; border-radius: 12px;
-    border: 1px solid var(--border); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.02);
+  /* Real screenshots: a carousel of the desktop app */
+  .carousel { position: relative; margin: 36px auto 0; max-width: 1080px; }
+  .slides {
+    display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+    scrollbar-width: none; outline: none; position: relative;
   }
-  .shot figcaption, .phones figcaption { color: var(--muted); font-size: 14px; margin-top: 12px; text-align: center; }
+  .slides::-webkit-scrollbar { display: none; }
+  .slide { flex: 0 0 100%; margin: 0; padding: 16px 20px 0; scroll-snap-align: center; }
+  .frame { aspect-ratio: 1440 / 900; display: flex; align-items: center; justify-content: center; }
+  .frame img {
+    display: block; max-width: 100%; max-height: 100%; width: auto; height: auto; border-radius: 12px;
+    border: 1px solid var(--border); box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+  }
+  .slide figcaption, .phones figcaption { color: var(--muted); font-size: 14px; margin-top: 14px; text-align: center; }
+  .nav {
+    position: absolute; top: calc(50% - 40px); width: 44px; height: 44px; border-radius: 50%;
+    border: 1px solid var(--border); background: rgba(29, 34, 41, 0.9); color: var(--text);
+    font-size: 26px; line-height: 1; cursor: pointer; display: grid; place-items: center;
+  }
+  .nav:hover { border-color: var(--accent); }
+  .nav:disabled { opacity: 0.35; cursor: default; }
+  .nav.prev { left: -6px; }
+  .nav.next { right: -6px; }
+  .dots { display: flex; justify-content: center; gap: 8px; margin-top: 14px; }
+  .dots button { width: 9px; height: 9px; padding: 0; border-radius: 50%; border: 0; background: var(--border); cursor: pointer; }
+  .dots button[aria-current="true"] { background: var(--accent); width: 24px; border-radius: 5px; }
   .phones { display: flex; gap: 22px; justify-content: center; flex-wrap: wrap; }
   .phones figure { margin: 0; width: 230px; }
   .phones img {
@@ -119,7 +138,9 @@
 
   @media (max-width: 720px) {
     .hero { padding: 48px 0 40px; }
-    .shot { margin-top: 32px; }
+    .carousel { margin-top: 28px; }
+    .slide { padding: 8px 0 0; }
+    .nav { display: none; }
     .phones figure { width: 46%; min-width: 150px; }
     section { padding: 44px 0; }
     .remote { grid-template-columns: 1fr; }
@@ -145,10 +166,24 @@
       <div id="note" class="others"></div>
     </div>
 
-    <figure class="shot">
-      <img src="assets/screenshot-app.webp" width="1440" height="900" alt="Psaltercast running a Sunday service: the schedule with Worship, Word and Response groups on the left, the preview in the middle, and Amazing Grace live on the right in English with Vietnamese underneath.">
-      <figcaption>A real service in Psaltercast: the schedule, the preview, and Amazing Grace live in two languages.</figcaption>
-    </figure>
+    <div class="carousel" role="region" aria-roledescription="carousel" aria-label="Screenshots">
+      <div class="slides" id="slides" tabindex="0">
+        <figure class="slide" id="shot-full" aria-roledescription="slide" aria-label="1 of 2">
+          <div class="frame"><img src="assets/screenshot-app.webp" width="1440" height="900" alt="Psaltercast running a Sunday service: the schedule with Worship, Word and Response groups on the left, the preview in the middle, and Amazing Grace live on the right in English with Vietnamese underneath."></div>
+          <figcaption>A real service: the schedule, the preview, and Amazing Grace live in English and Vietnamese.</figcaption>
+        </figure>
+        <figure class="slide" id="shot-minimal" aria-roledescription="slide" aria-label="2 of 2">
+          <div class="frame"><img src="assets/screenshot-minimal.webp" width="1024" height="720" loading="lazy" alt="Psaltercast in minimal mode on a smaller screen: only the schedule and the live output, with a slimmer toolbar."></div>
+          <figcaption>Minimal mode for smaller screens: just the schedule and what's live.</figcaption>
+        </figure>
+      </div>
+      <button class="nav prev" type="button" aria-controls="slides" aria-label="Previous screenshot">‹</button>
+      <button class="nav next" type="button" aria-controls="slides" aria-label="Next screenshot">›</button>
+      <div class="dots" role="group" aria-label="Choose a screenshot">
+        <button type="button" data-to="0" aria-label="Full layout" aria-current="true"></button>
+        <button type="button" data-to="1" aria-label="Minimal mode"></button>
+      </div>
+    </div>
   </div>
 </header>
 
@@ -226,6 +261,45 @@
 </footer>
 
 <script>
+// Screenshot carousel: swipe or scroll, the arrows, the dots or ← → keys.
+(() => {
+  const track = document.getElementById("slides");
+  const slides = [...track.children];
+  const dots = [...document.querySelectorAll(".dots button")];
+  const prev = document.querySelector(".nav.prev");
+  const next = document.querySelector(".nav.next");
+  // The slide nearest the middle of the track (works mid-swipe and at any width).
+  const current = () => {
+    const middle = track.scrollLeft + track.clientWidth / 2;
+    let best = 0;
+    slides.forEach((slide, i) => {
+      const distance = (s) => Math.abs(s.offsetLeft + s.offsetWidth / 2 - middle);
+      if (distance(slide) < distance(slides[best])) best = i;
+    });
+    return best;
+  };
+  // Marks slide `i` (default: the one in view) in the dots and arrows.
+  const update = (i = current()) => {
+    dots.forEach((d, n) => d.setAttribute("aria-current", String(n === i)));
+    prev.disabled = i === 0;
+    next.disabled = i === slides.length - 1;
+  };
+  const go = (i) => {
+    const target = Math.max(0, Math.min(slides.length - 1, i));
+    track.scrollTo({ left: slides[target].offsetLeft });
+    update(target);
+  };
+  prev.addEventListener("click", () => go(current() - 1));
+  next.addEventListener("click", () => go(current() + 1));
+  dots.forEach((d) => d.addEventListener("click", () => go(+d.dataset.to)));
+  track.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft") { e.preventDefault(); go(current() - 1); }
+    if (e.key === "ArrowRight") { e.preventDefault(); go(current() + 1); }
+  });
+  track.addEventListener("scroll", () => update(), { passive: true });
+  update();
+})();
+
 (() => {
   const REPO = "davidkngo/psaltercast-release";
   // The installer; older releases only had a zip.
